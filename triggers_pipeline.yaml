@@ -4,6 +4,28 @@
 
 stages:
   - stage: 
+    jobs:
+      - job: TriggerJob
+        displayName: "triggers the first pipeline"
+        pool:
+         
+          
+        steps:
+            - task: Maven@4
+              inputs:
+                  mavenPomFile: 'pom.xml'
+                  publishJUnitResults: true
+                  testResultsFiles: '**/surefire-reports/TEST-*.xml'
+                  javaHomeOption: 'JDKVersion'
+                  mavenVersionOption: 'Default'
+                  mavenAuthenticateFeed: false
+                  effectivePomSkip: false
+                  sonarQubeRunAnalysis: true
+                  sqMavenPluginVersionChoice: 'latest'
+                  checkStyleRunAnalysis: true
+                  pmdRunAnalysis: true
+                  findBugsRunAnalysis: true
+                  spotBugsRunAnalysis: true
 trigger:
  branches:
     include:
