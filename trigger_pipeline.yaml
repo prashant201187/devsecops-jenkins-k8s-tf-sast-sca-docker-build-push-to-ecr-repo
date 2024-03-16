@@ -1,0 +1,23 @@
+# This is yaml file triggers the pipeline on changes to the specified braches(main in this example)
+# while excluding certain files and folders(README.md and docs/* in this exmple)
+
+trigger:
+ branches:
+  include:
+  - main
+ paths:
+   exclude:
+     - README.md
+     - docs/*
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, trigger pipline!
+  displayName: 'Run a trigger pipline'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
