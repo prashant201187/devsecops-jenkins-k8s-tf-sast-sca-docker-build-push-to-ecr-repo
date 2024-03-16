@@ -1,0 +1,24 @@
+# this yaml file defines a pipeline that triggers on changes to the same branches as the first pipeline . it includes all the paths 
+## like (*) to process all accumalted commits
+
+trigger:
+ branches:
+    include:
+      - main
+ paths:
+    include:
+      - "*"
+pr:
+ autoCancel: true
+
+jobs:
+- job: ProcessCommits
+  displayName: "process for accumalated commits"
+  pool:
+   vmImage: ubuntu-latest
+
+  steps:
+    - script: processing accumalted commits
+      displayName: 'processing'
+
+
