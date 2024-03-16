@@ -1,0 +1,14 @@
+# triggers_pipeline.yaml
+# This is yaml file that will triggers the pipeline on changes to the specified branches(main in this example) while
+# excluding certaine files and folders(readme.md and docs/* in this example)
+
+stages:
+  - stage: 
+trigger:
+ branches:
+    include:
+    - main
+ paths:
+   exclude:
+     - README.md
+     - docs/*
